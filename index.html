@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucía Ramos Gambero | Robótica y Mecatrónica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark-1: #2c2b33;      /* Tramo gris grafito cálido */
+            --bg-dark-2: #35343d;      /* Tramo gris pizarra claro alterno */
+            --bg-card: #3f3e4a;        /* Fondo de tarjetas */
+            --border: #525060;         /* Borde gris fino */
+            
+            --accent-pink: #9E768F;    /* Rosa malva empolvado */
+            --accent-blue: #5eead4;    /* Azul agua / menta celeste suave */
+            
+            --text-main: #f8fafc;      /* Texto plata brillante */
+            --text-muted: #cbd5e1;     /* Gris secundario */
+            --code-bg: #212028;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-dark-1);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* BARRA DE NAVEGACIÓN SUPERIOR CON SCROLLSPY */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(44, 43, 51, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--accent-pink);
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.8rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 0.82rem;
+            transition: all 0.25s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            background: var(--code-bg);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-pink) !important;
+            background: rgba(158, 118, 143, 0.25) !important;
+            border: 1px solid rgba(158, 118, 143, 0.5);
+            font-weight: bold;
+        }
+
+        /* TRAMOS DE FONDO */
+        .section-wrapper-1 {
+            background-color: var(--bg-dark-1);
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-wrapper-2 {
+            background-color: var(--bg-dark-2);
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* HEADER PERFIL */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h1 {
+            font-size: 2.3rem;
+            margin: 0 0 0.2rem 0;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-info .subtitle {
+            font-size: 1.05rem;
+            color: var(--accent-pink);
+            font-weight: 600;
+            font-family: monospace;
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-info p {
+            margin: 0 0 1rem 0;
+            color: var(--text-muted);
+            font-size: 0.96rem;
+            line-height: 1.6;
+        }
+
+        .img-container {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            display: block;
+        }
+
+        /* BOTONES DE CONTACTO */
+        .social-links {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            margin-top: 1.2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            background: var(--code-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            font-family: monospace;
+        }
+
+        .btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--accent-pink);
+            color: #ffffff;
+            border: 1px solid var(--accent-pink);
+        }
+
+        .btn-primary:hover {
+            background: #b288a3;
+            border-color: #b288a3;
+            color: #ffffff;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.6rem;
+            font-size: 0.75rem;
+            margin-top: 0.8rem;
+        }
+
+        /* TÍTULOS DE SECCIÓN */
+        .section-title-clean {
+            font-family: monospace;
+            font-size: 1.25rem;
+            color: var(--accent-pink);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title-clean::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+        }
+
+        .title-icon-svg {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        /* ANIMACIONES MINI ICONOS */
+        .icon-float { animation: floatAnim 3s ease-in-out infinite alternate; }
+        @keyframes floatAnim { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
+
+        .icon-pulse { animation: pulseGlow 1.8s ease-in-out infinite alternate; }
+        @keyframes pulseGlow { 0% { opacity: 0.4; } 100% { opacity: 1; filter: drop-shadow(0 0 5px var(--accent-blue)); } }
+
+        .icon-radar-spin { transform-origin: center; animation: radarSpin 4s linear infinite; }
+        @keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .icon-terminal-blink { animation: blinkCursor 1s step-end infinite; }
+        @keyframes blinkCursor { 50% { opacity: 0; } }
+
+        /* TARJETAS DE CONTENIDO */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.3rem;
+            margin-bottom: 1.3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .card-title { font-size: 1.1rem; font-weight: 700; color: #fff; }
+        .card-date { font-size: 0.8rem; color: var(--text-muted); font-family: monospace; }
+
+        .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+
+        .tag-pink {
+            background: rgba(158, 118, 143, 0.25);
+            color: #e2bcd4;
+            border: 1px solid rgba(158, 118, 143, 0.45);
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        .tag-blue {
+            background: rgba(94, 234, 212, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(94, 234, 212, 0.35);
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        ul { margin: 0; padding-left: 1.2rem; color: var(--text-muted); }
+        li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+        li strong { color: var(--text-main); }
+
+        /* COMPETENCIAS EN FILAS */
+        .skills-container { display: flex; flex-direction: column; gap: 1rem; }
+
+        .skill-row {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.1rem 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            transition: all 0.25s ease;
+        }
+
+        .skill-row:hover { border-color: var(--accent-pink); transform: translateX(4px); }
+        .skill-info h3 { margin: 0 0 0.2rem 0; font-size: 0.98rem; color: var(--accent-blue); font-family: monospace; }
+        .skill-info p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+
+        /* PROYECTOS + ROBOT CON BRAZO ARTICULADO Y CHASIS ROVER */
+        .projects-layout {
+            display: grid;
+            grid-template-columns: 1fr 310px;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .robot-standalone-container {
+            width: 100%;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .robot-svg-3d {
+            width: 290px;
+            height: 260px;
+        }
+
+        /* ANIMACIÓN DE MOVIMIENTO SUAVE DEL ROBOT */
+        .robot-rover-motion {
+            transform-style: preserve-3d;
+            animation: roverFloatMotion 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes roverFloatMotion {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(-1.5deg); }
+            100% { transform: translateY(4px) rotate(2deg); }
+        }
+
+        .arm-gripper-pulse {
+            animation: clawAction 3s ease-in-out infinite alternate;
+            transform-origin: 215px 45px;
+        }
+
+        @keyframes clawAction {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-8deg); }
+        }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+
+        .info-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.1rem;
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .info-box:hover { border-color: var(--accent-pink); }
+        .info-box h3 { margin: 0 0 0.4rem 0; font-size: 0.95rem; color: var(--accent-blue); font-family: monospace; }
+        .info-box p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+
+        code {
+            background: var(--code-bg);
+            color: var(--accent-pink);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        /* CAJA DE CONTACTO */
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-pink);
+            box-shadow: 0 0 20px rgba(158, 118, 143, 0.25);
+            padding: 1.8rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-box p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+
+        .subtle-mobility-note {
+            font-family: monospace;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* RESPONSIVE PARA MÓVILES */
+        @media (max-width: 820px) {
+            .projects-layout { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
+            .social-links { justify-content: center; }
+            .skill-row { flex-direction: column; align-items: flex-start; }
+            .robot-standalone-container { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BARRA DE NAVEGACIÓN SUPERIOR CON SCROLLSPY -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-brand">&gt; lucia_ramos_gambero</a>
+        <ul class="nav-links">
+            <li><a href="#educacion" class="nav-link">~/educacion</a></li>
+            <li><a href="#competencias" class="nav-link">~/competencias</a></li>
+            <li><a href="#idiomas" class="nav-link">~/idiomas</a></li>
+            <li><a href="#certificaciones" class="nav-link">~/certificaciones</a></li>
+            <li><a href="#proyectos" class="nav-link">~/proyectos</a></li>
+            <li><a href="#contacto" class="nav-link">~/contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- TRAMO 1: HEADER DE PERFIL -->
+<div class="section-wrapper-1" id="perfil">
+    <div class="container">
+        <header class="profile-header">
+            <div class="profile-info">
+                <h1>Lucía Ramos Gambero</h1>
+                <div class="subtitle">$ ros2 run perfil_usuario lucia --grado robotica</div>
+                Estudiante del Grado en Ingeniería Electrónica, Robótica y Mecatrónica en la Universidad de Málaga (con estancia Erasmus+ en Warsaw University of Technology). Enfocada en el análisis, simulación y control de sistemas robóticos móviles y automatización industrial, con especial interés por seguir aprendiendo, abordar nuevos retos técnicos y aplicar tecnologías emergentes en proyectos reales.
+                <div class="social-links">
+                    <a href="mailto:luciarg@uma.es" class="btn btn-primary"><i class="fas fa-envelope"></i> Contacto UMA</a>
+                    <a href="mailto:luciaramosgam@gmail.com" class="btn"><i class="fas fa-envelope"></i> Contacto Personal</a>
+                    <a href="CV_Lucia_Ramos.pdf" target="_blank" class="btn"><i class="fas fa-file-pdf"></i> CV (PDF)</a>
+                    <a href="https://github.com/luciargg" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/luciargg/" target="_blank" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img src="foto.jpg" alt="Lucía Ramos Gambero" class="profile-img">
+            </div>
+        </header>
+    </div>
+</div>
+
+<!-- TRAMO 2: EDUCACIÓN -->
+<div class="section-wrapper-2" id="educacion">
+    <div class="container">
+        <section>
+            <div class="section-title-clean">
+                <svg class="title-icon-svg icon-float" viewBox="0 0 24 24" fill="none" stroke="#9E768F" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/>
+                </svg>
+                <span>~/educacion</span>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-university" style="color: var(--accent-pink);"></i> Grado en Ingeniería Electrónica, Robótica y Mecatrónica</span>
+                    <span class="card-date">2022 — Presente</span>
+                </div>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem;">
+                    <strong>Universidad de Málaga (UMA)</strong> — Málaga, España.<br>
+                    Mención en Robótica y Automatización.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-globe-europe" style="color: var(--accent-pink);"></i> Programa de Intercambio Internacional Erasmus+</span>
+                    <span class="card-date">Feb 2026 — Jun 2026</span>
+                </div>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem;">
+                    <strong>Warsaw University of Technology (WUT)</strong> — Varsovia, Polonia.<br>
+                    Programa en facultad de ingeniería eléctrica.
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- TRAMO 3: COMPETENCIAS TÉCNICAS (DIAGRAMA UNIFICADO Y EXPANDIDO CON ESTILO HUD) -->
+<div class="section-wrapper-1" id="competencias">
+    <div class="container">
+        <section>
+            <div class="section-title-clean">
+                <svg class="title-icon-svg icon-pulse" viewBox="0 0 24 24" fill="none" stroke="#5eead4" stroke-width="2">
+                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                    <path d="M9 9h6v6H9z"/>
+                    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/>
+                </svg>
+                <span>~/competencias_tecnicas</span>
+            </div>
+
+            <style>
+                /* Estilos específicos para el diagrama circular expandido y side-by-side */
+                .diag-expanded-wrapper {
+                    display: grid;
+                    grid-template-columns: 260px 1fr; /* Volvemos a un ancho de infograma más contenido */
+                    gap: 1.5rem;
+                    align-items: start;
+                    margin-top: 1.5rem;
+                }
+
+                .diag-compact-container {
+                    position: relative;
+                    width: 100%;
+                    aspect-ratio: 1 / 1;
+                    background: transparent;
+                }
+
+                .diag-main-circle {
+                    position: absolute;
+                    top: 15%;
+                    left: 15%;
+                    width: 70%;
+                    height: 70%;
+                    background: rgba(44, 43, 51, 0.3);
+                    border-radius: 50%;
+                    border: 1px solid var(--border);
+                    box-shadow: 0 0 30px rgba(94, 234, 212, 0.08);
+                    transition: box-shadow 0.5s ease;
+                }
+
+                .diag-center-hub {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 38%; /* Mantenemos el central prominente */
+                    height: 38%;
+                    background: var(--bg-card);
+                    border-radius: 50%;
+                    border: 2px solid var(--border);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    font-family: monospace;
+                    font-size: 0.95rem;
+                    font-weight: bold;
+                    color: #fff;
+                    z-index: 10;
+                    box-shadow: inset 0 0 15px rgba(94, 234, 212, 0.1);
+                    padding: 0.2rem;
+                    box-sizing: border-box;
+                }
+
+                .diag-skill-node {
+                    position: absolute;
+                    width: 28%; /* Círculos de competencias más pequeños (antes 34%) */
+                    height: 28%; /* Círculos de competencias más pequeños (antes 34%) */
+                    background: var(--bg-card);
+                    border-radius: 50%;
+                    border: 1.5px solid var(--border);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    z-index: 5;
+                    cursor: pointer;
+                    transition: all 0.35s ease;
+                    text-decoration: none;
+                    color: inherit;
+                    padding: 0.2rem;
+                    box-sizing: border-box;
+                }
+
+                .diag-skill-node:hover {
+                    transform: scale(1.1);
+                    border-color: var(--accent-pink);
+                    box-shadow: 0 0 20px rgba(158, 118, 143, 0.25);
+                }
+
+                .diag-skill-node .title-icon-svg {
+                    width: 20px; /* Iconos un poco más pequeños para encajar en círculos menores */
+                    height: 20px;
+                    stroke: #e2bcd4;
+                }
+
+                .diag-skill-node h3 {
+                    margin: 0.2rem 0 0 0; /* Ajuste de margen */
+                    font-size: 0.6rem; /* Texto de nodo un pelín más pequeño */
+                    line-height: 1.1;
+                    font-weight: 600;
+                    color: #fff;
+                    font-family: monospace;
+                }
+
+                .diag-skill-node.active-node {
+                    border-color: var(--accent-blue);
+                    box-shadow: 0 0 25px rgba(94, 234, 212, 0.35);
+                    background: rgba(94, 234, 212, 0.05);
+                }
+
+                /* Posiciones de los nodos (ligeramente ajustadas para círculos más pequeños) */
+                #diag-node-prog { top: 10%; left: 10%; }
+                #diag-node-robot { top: 10%; right: 10%; }
+                #diag-node-hard { bottom: 10%; left: 10%; }
+                #diag-node-auto { bottom: 10%; right: 10%; }
+
+                /* Panel de detalles estilo HUD a la derecha */
+                .diag-details-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    padding: 1rem;
+                    background: var(--bg-card);
+                    border: 1px solid var(--accent-pink);
+                    border-radius: 8px;
+                    box-shadow: 0 0 15px rgba(158, 118, 143, 0.15);
+                }
+
+                .diag-details-panel {
+                    display: none;
+                }
+
+                .diag-details-panel.panel-active {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.8rem;
+                    animation: panelFadeIn 0.4s ease forwards;
+                }
+
+                @keyframes panelFadeIn {
+                    from { opacity: 0; transform: translateX(10px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+
+                .diag-details-panel h4 {
+                    margin: 0 0 0.5rem 0;
+                    color: var(--accent-pink);
+                    font-family: monospace;
+                    font-size: 0.95rem;
+                }
+
+                /* Estilo de tags y texto impersonal fluido */
+                .diag-tags-and-text {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.4rem;
+                    align-items: center;
+                }
+
+                .diag-tags-and-text .tags {
+                    display: flex;
+                    gap: 0.3rem;
+                }
+
+                .diag-tags-and-text .tags span {
+                    font-size: 0.82rem;
+                    padding: 0.1rem 0.4rem;
+                }
+
+                .diag-skill-summary {
+                    font-size: 0.9rem;
+                    color: var(--text-muted);
+                    line-height: 1.5;
+                    margin: 0;
+                }
+
+                /* Adaptación para móviles */
+                @media (max-width: 700px) {
+                    .diag-expanded-wrapper {
+                        grid-template-columns: 1fr; /* Apilar en móviles */
+                    }
+
+                    .diag-compact-container {
+                        max-width: 260px;
+                        margin: 0 auto;
+                    }
+                }
+            </style>
+
+            <div class="diag-expanded-wrapper">
+                <!-- COLUMNA IZQUIERDA: INFOGRAMA (CON CÍRCULOS DE COMPETENCIAS MÁS PEQUEÑOS) -->
+                <div class="diag-compact-container" id="diag-skills-diagram">
+                    <div class="diag-main-circle"></div>
+                    <div class="diag-center-hub">COMPETENCIAS/<br>HERRAMIENTAS</div>
+
+                    <!-- Nodo 1: Programación -->
+                    <a href="#" class="diag-skill-node" id="diag-node-prog" onclick="showDiagPanel('prog'); return false;">
+                        <svg class="title-icon-svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M16 18l6-6-6-6M8 6L2 12l6 6"/>
+                        </svg>
+                        <h3>Programación<br>& Software</h3>
+                    </a>
+
+                    <!-- Nodo 2: Robótica -->
+                    <a href="#" class="diag-skill-node" id="diag-node-robot" onclick="showDiagPanel('robot'); return false;">
+                        <svg class="title-icon-svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="7" r="4"/>
+                            <path d="M12 11v8M16 15h3M8 15h-3"/>
+                            <circle cx="12" cy="19" r="2"/>
+                        </svg>
+                        <h3>Robótica<br>& Navegación</h3>
+                    </a>
+
+                    <!-- Nodo 3: Hardware -->
+                    <a href="#" class="diag-skill-node" id="diag-node-hard" onclick="showDiagPanel('hard'); return false;">
+                        <svg class="title-icon-svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                            <path d="M9 9h6v6H9z"/>
+                            <path d="M9 1v3M15 1v3"/>
+                        </svg>
+                        <h3>Hardware<br>& Sistemas</h3>
+                    </a>
+
+                    <!-- Nodo 4: Automatización -->
+                    <a href="#" class="diag-skill-node" id="diag-node-auto" onclick="showDiagPanel('auto'); return false;">
+                        <svg class="title-icon-svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M20 16.2A4.5 4.5 0 1 0 16.2 20M3 3h4l2.2 11h9l2-8H6.5"/>
+                            <path d="M21 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                        </svg>
+                        <h3>Automatización<br>& Simulación</h3>
+                    </a>
+                </div>
+
+                <!-- COLUMNA DERECHA: ÚNICO PANEL DE DETALLES HUD CON TAGS Y TEXTO FLUIDO -->
+                <div class="diag-details-wrapper">
+                    <!-- Panel Programación -->
+                    <div class="diag-details-panel panel-active" id="diag-panel-prog">
+                        <h4>Programación y Software</h4>
+                        <div class="diag-tags-and-text">
+                            <div class="tags">
+                                <span class="tag-blue">C / C++</span>
+                                <span class="tag-blue">Python</span>
+                                <span class="tag-blue">MATLAB</span>
+                                <span class="tag-blue">Git</span>
+                            </div>
+                            <p class="diag-skill-summary">Desarrollo integral de firmware y algoritmos de control.</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel Robótica -->
+                    <div class="diag-details-panel" id="diag-panel-robot">
+                        <h4>Robótica y Navegación</h4>
+                        <div class="diag-tags-and-text">
+                            <div class="tags">
+                                <span class="tag-blue">ROS 2</span>
+                                <span class="tag-blue">micro-ROS</span>
+                                <span class="tag-blue">Control PID</span>
+                                <span class="tag-blue">Odometría</span>
+                            </div>
+                            <p class="diag-skill-summary">Diseño e integración de arquitecturas distribuidas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel Hardware -->
+                    <div class="diag-details-panel" id="diag-panel-hard">
+                        <h4>Hardware y Sistemas</h4>
+                        <div class="diag-tags-and-text">
+                            <div class="tags">
+                                <span class="tag-blue">ESP32</span>
+                                <span class="tag-blue">Arduino</span>
+                                <span class="tag-blue">IMUs</span>
+                                <span class="tag-blue">L298N</span>
+                            </div>
+                            <p class="diag-skill-summary">Integración y programación de microcontroladores y sensores.</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel Automatización -->
+                    <div class="diag-details-panel" id="diag-panel-auto">
+                        <h4>Automatización y Simulación</h4>
+                        <div class="diag-tags-and-text">
+                            <div class="tags">
+                                <span class="tag-blue">TwinCAT 3</span>
+                                <span class="tag-blue">Ignition</span>
+                                <span class="tag-blue">PLC</span>
+                                <span class="tag-blue">PLECS</span>
+                            </div>
+                            <p class="diag-skill-summary">Implementación de sistemas de control industrial y simulación avanzada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Función compacta para mostrar los paneles de detalles integrados
+                function showDiagPanel(type) {
+                    // Ocultar todos los paneles y desactivar todos los nodos
+                    const elements = document.querySelectorAll('.diag-details-panel, .diag-skill-node');
+                    elements.forEach(el => el.classList.remove('panel-active', 'active-node'));
+
+                    // Mostrar el panel seleccionado y activar el nodo correspondiente
+                    document.getElementById('diag-panel-' + type)?.classList.add('panel-active');
+                    document.getElementById('diag-node-' + type)?.classList.add('active-node');
+                }
+
+                // Iniciar con el primer panel visible por defecto
+                document.addEventListener('DOMContentLoaded', () => showDiagPanel('prog'));
+            </script>
+
+        </section>
+    </div>
+</div>
+
+<!-- TRAMO 4: IDIOMAS -->
+<div class="section-wrapper-2" id="idiomas">
+    <div class="container">
+        <section>
+            <div class="section-title-clean">
+                <svg class="title-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#9E768F" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path class="icon-radar-spin" d="M12 12L19 5"/>
+                    <circle cx="12" cy="12" r="3" fill="#9E768F"/>
+                </svg>
+                <span>~/idiomas</span>
+            </div>
+
+            <div class="grid-3">
+                <div class="info-box">
+                    <h3>Inglés</h3>
+                    <p>Cambridge Certificate CAE C1 Advanced- (200 points, C2) Código de verificación: <code>B6871685</code>.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Español</h3>
+                    <p>Lengua nativa.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Francés</h3>
+                    <p>Nivel Básico — Competencia técnica y comunicación elemental.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- TRAMO 5: CERTIFICACIONES Y FORMACIÓN ESPECIALIZADA -->
+<div class="section-wrapper-1" id="certificaciones">
+    <div class="container">
+        <section>
+            <div class="section-title-clean">
+                <svg class="title-icon-svg icon-pulse" viewBox="0 0 24 24" fill="none" stroke="#5eead4" stroke-width="2">
+                    <path d="M12 15l-2 5l-3 -2l-3 2l2 -5"/>
+                    <circle cx="12" cy="9" r="6"/>
+                </svg>
+                <span>~/certificaciones</span>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-certificate" style="color: var(--accent-pink);"></i>UPTECH: Training course on artificial intelligence</span>
+                    <span class="card-date">EIT Higher Education Initiative</span>
+                </div>
+                <div class="tags">
+                    <span class="tag-pink">IA</span>
+                    <span class="tag-pink">Machine Learning</span>
+                </div>
+                <p style="margin: 0 0 0.8rem 0; color: var(--text-muted); font-size: 0.92rem;">
+                    Certificación acreditada en principios de Inteligencia Artificial, arquitectura de modelos de aprendizaje automático y su aplicación en la resolución de problemas técnicos.
+                </p>
+                <!-- ENLACE AL ARCHIVO PDF EN EL REPOSITORIO -->
+                <a href="Certificado_IA.pdf" target="_blank" class="btn btn-sm" style="color: var(--accent-blue); border-color: var(--accent-blue);"><i class="fas fa-file-pdf"></i> Ver Certificado (PDF)</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fas fa-water" style="color: var(--accent-pink);"></i> Operación de ROVs y Robótica Submarina (ECO2-ALGAE)</span>
+                    <span class="card-date">Consorcio CEI-MAR & Andalú Sea</span>
+                </div>
+                <div class="tags">
+                    <span class="tag-pink">ROVs</span>
+                    <span class="tag-pink">Robótica Marina</span>
+                </div>
+                <p style="margin: 0 0 0.8rem 0; color: var(--text-muted); font-size: 0.92rem;">
+                  Programa formativo y expedición científica sobre robótica submarina (ROVs). Enfoque principal en el estudio, mapeo y monitoreo del impacto ambiental de algas invasoras en el litoral andaluz. En colaboración con la empresa Andalú Sea, CEIMAR y la Universidad de Málaga. 
+                </p>
+                <a href="Certificado_CEIMAR.pdf" target="_blank" class="btn btn-sm" style="color: var(--accent-blue); border-color: var(--accent-blue);"><i class="fas fa-file-pdf"></i> Ver Certificado (PDF)</a>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- TRAMO 6: PROYECTOS DESTACADOS - BALANCE DE ESPACIOS (PANEL HUD) -->
+<div class="section-wrapper-2" id="proyectos" style="padding: 2.2rem 0;">
+    <div class="container" style="max-width: 1050px;">
+        <section>
+            <div class="section-title-clean" style="margin-bottom: 1.2rem;">
+                <svg class="title-icon-svg" viewBox="0 0 32 32" fill="none">
+                    <path d="M 10 6 L 22 6 L 28 12 L 28 22 L 22 26 L 10 26 L 4 22 L 4 12 Z" fill="#212028" stroke="#5eead4" stroke-width="1.5"/>
+                    <circle class="icon-radar-spin" cx="4" cy="10" r="3.5" fill="#35343d" stroke="#5eead4" stroke-width="1.5"/>
+                    <circle class="icon-radar-spin" cx="28" cy="10" r="3.5" fill="#35343d" stroke="#5eead4" stroke-width="1.5"/>
+                    <circle cx="12" cy="24" r="1.5" fill="#9E768F"/>
+                    <circle cx="20" cy="24" r="1.5" fill="#9E768F"/>
+                </svg>
+                <span>~/proyectos_destacados</span>
+            </div>
+
+            <!-- GRID PRINCIPAL EQUILIBRADO -->
+            <div class="projects-layout" style="display: grid; grid-template-columns: 1fr 280px; gap: 1.5rem; align-items: start;">
+                
+                <!-- COLUMNA IZQUIERDA: TARJETAS DE PROYECTOS -->
+                <div class="projects-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                    
+                    <!-- Proyecto 1 -->
+                    <div class="card" style="margin-bottom: 0; padding: 1.15rem;">
+                        <div class="card-header" style="margin-bottom: 0.4rem;">
+                            <span class="card-title"><i class="fas fa-robot" style="color: var(--accent-pink);"></i> Robot Móvil Diferencial Autónomo</span>
+                            <span class="card-date">2026</span>
+                        </div>
+                        <div class="tags" style="margin-bottom: 0.6rem;">
+                            <span class="tag-pink">C++</span>
+                            <span class="tag-pink">ROS 2</span>
+                            <span class="tag-pink">micro-ROS</span>
+                            <span class="tag-pink">ESP32</span>
+                            <span class="tag-pink">Control PID</span>
+                            <span class="tag-pink">Odometría</span>
+                        </div>
+                        <p style="margin: 0 0 0.6rem 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">
+                            Desarrollo integral de un robot móvil de tracción diferencial usando el microcontrolador ESP32. El sistema implementa cinemática inversa diferencial, estimación de pose por odometría y control en lazo cerrado con PID discretos aplicando filtro derivativo y anti-windup. Incorpora navegación autónoma mediante el algoritmo <em>Follow the Carrot</em>, frenado activo por contramarcha y evasión de obstáculos reactiva mediante sensores de proximidad. Además, dispone de comunicación con <strong>micro-ROS</strong> y un servidor web para control móvil mediante una interfaz táctil.
+                        </p>
+                        <a href="https://github.com/luciargg/robot-movil" target="_blank" class="btn btn-sm" style="color: var(--accent-blue); border-color: var(--accent-blue); margin-top: 0.2rem;"><i class="fab fa-github"></i> Ver Repositorio</a>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="card" style="margin-bottom: 0; padding: 1.15rem;">
+                        <div class="card-header" style="margin-bottom: 0.4rem;">
+                            <span class="card-title"><i class="fas fa-industry" style="color: var(--accent-pink);"></i> SCADA de Planta Industrial de Galletas</span>
+                            <span class="card-date">2026</span>
+                        </div>
+                        <div class="tags" style="margin-bottom: 0.6rem;">
+                            <span class="tag-pink">TwinCAT 3</span>
+                            <span class="tag-pink">Ignition SCADA</span>
+                            <span class="tag-pink">OPC UA</span>
+                            <span class="tag-pink">PLC</span>
+                            <span class="tag-pink">SFC</span>
+                        </div>
+                        <p style="margin: 0 0 0.6rem 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">
+                            Diseño e implementación de un sistema SCADA en TwinCAT 3 e Ignition Maker para la automatización de una planta de galletas. La lógica secuencial (SFC) controla la mezcla en paralelo de crema y masa en dos tanques, el calentamiento con regulación de setpoint, la transferencia a la moldeadora y el envasado en lotes de 30 unidades. Sobre una comunicación segura mediante OPC UA, la interfaz HMI (diseñada bajo la guía GEDIS) ofrece representación animada de tuberías, agitadores y válvulas, monitorización gráfica en tiempo real, gestión de alarmas por sobrellenado o temperatura, control de acceso por roles y descarga de informes de producción en CSV.
+                        </p>
+                        <a href="Video_SCADA.mp4" target="_blank" class="btn btn-sm" style="color: var(--accent-blue); border-color: var(--accent-blue); margin-top: 0.2rem;"><i class="fas fa-video"></i> Ver Vídeo Demo (MP4)</a>
+                    </div>
+
+                    <!-- Proyecto 3 -->
+                    <div class="card" style="margin-bottom: 0; padding: 1.15rem;">
+                        <div class="card-header" style="margin-bottom: 0.4rem;">
+                            <span class="card-title"><i class="fas fa-charging-station" style="color: var(--accent-pink);"></i> Cargador Rápido Buck DCM para iPhone 13 (PLECS)</span>
+                            <span class="card-date">2026</span>
+                        </div>
+                        <div class="tags" style="margin-bottom: 0.6rem;">
+                            <span class="tag-pink">PLECS</span>
+                        </div>
+                        <p style="margin: 0 0 0.6rem 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">
+                            Diseño y simulación en PLECS de un convertidor DC/DC Buck en Modo de Conducción Discontinua para el cargador rápido de un iPhone 13. El circuito regula la tensión procedente de un pack de baterías Li-Ion 4S. Incluye el dimensionado analítico para garantizar un rizado &lt; 1.5%, selección optimizada de semiconductores y validación en estado estacionario ante variaciones de carga.
+                        </p>
+                        </div>
+
+                </div>
+
+                <!-- COLUMNA DERECHA: PANEL HUD UNIFICADO (LLENA EL ESPACIO VERTICAL) -->
+                <div style="position: sticky; top: 90px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                    
+                    <!-- 1. Robot Móvil Animado -->
+                    <div style="width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; background: rgba(33, 32, 40, 0.5); border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <svg class="robot-svg-3d" viewBox="0 30 280 190" style="width: 100%; height: 100%;">
+                            <defs>
+                                <linearGradient id="chassisGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#3b3a47"/>
+                                    <stop offset="50%" stop-color="#2c2b33"/>
+                                    <stop offset="100%" stop-color="#212028"/>
+                                </linearGradient>
+                                <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#5eead4"/>
+                                    <stop offset="100%" stop-color="#38bdf8"/>
+                                </linearGradient>
+                                <linearGradient id="wheelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#475569"/>
+                                    <stop offset="100%" stop-color="#0f172a"/>
+                                </linearGradient>
+                            </defs>
+
+                            <g class="robot-rover-motion">
+                                <ellipse cx="140" cy="225" rx="80" ry="10" fill="rgba(0, 0, 0, 0.4)"/>
+                                <g transform="translate(80, 195)">
+                                    <circle cx="0" cy="0" r="22" fill="url(#wheelGrad)" stroke="#525060" stroke-width="4"/>
+                                    <circle cx="0" cy="0" r="10" fill="#212028" stroke="#5eead4" stroke-width="2"/>
+                                    <circle cx="0" cy="0" r="4" fill="#5eead4"/>
+                                </g>
+                                <g transform="translate(195, 195)">
+                                    <circle cx="0" cy="0" r="22" fill="url(#wheelGrad)" stroke="#525060" stroke-width="4"/>
+                                    <circle cx="0" cy="0" r="10" fill="#212028" stroke="#5eead4" stroke-width="2"/>
+                                    <circle cx="0" cy="0" r="4" fill="#5eead4"/>
+                                </g>
+                                <rect x="80" y="190" width="115" height="10" rx="3" fill="#212028" stroke="#525060" stroke-width="1.5"/>
+                                <path d="M 55 180 L 80 145 L 195 145 L 220 180 L 195 190 L 80 190 Z" fill="url(#chassisGrad)" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round"/>
+                                <line x1="72" y1="160" x2="203" y2="160" stroke="#9E768F" stroke-width="3" stroke-linecap="round"/>
+                                <line x1="65" y1="172" x2="210" y2="172" stroke="#5eead4" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M 125 145 A 14 14 0 0 1 153 145 Z" fill="rgba(94, 234, 212, 0.2)" stroke="#5eead4" stroke-width="2"/>
+                                <circle cx="139" cy="138" r="4" fill="#9E768F"/>
+                                <path d="M 170 145 L 175 135 L 205 135 L 210 145 Z" fill="#212028" stroke="#9E768F" stroke-width="2"/>
+                                <circle cx="190" cy="132" r="8" fill="#35343d" stroke="#5eead4" stroke-width="2.5"/>
+                                <line x1="190" y1="132" x2="145" y2="72" stroke="url(#armGrad)" stroke-width="7" stroke-linecap="round"/>
+                                <line x1="190" y1="132" x2="145" y2="72" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                                <circle cx="145" cy="72" r="7" fill="#35343d" stroke="#9E768F" stroke-width="2.5"/>
+                                <line x1="145" y1="72" x2="205" y2="45" stroke="url(#armGrad)" stroke-width="6" stroke-linecap="round"/>
+                                <circle cx="205" cy="45" r="6" fill="#35343d" stroke="#5eead4" stroke-width="2"/>
+                                <g class="arm-gripper-pulse">
+                                    <path d="M 205 45 L 215 45" stroke="#9E768F" stroke-width="4" stroke-linecap="round"/>
+                                    <path d="M 215 40 Q 225 35 230 43" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round"/>
+                                    <path d="M 215 50 Q 225 55 230 47" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+<!-- TRAMO 7: CONTACTO -->
+<div class="section-wrapper-1" id="contacto">
+    <div class="container">
+        <section>
+            <div class="section-title-clean">
+                <svg class="title-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#5eead4" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="3"/>
+                    <path d="M6 9l4 3-4 3"/>
+                    <line class="icon-terminal-blink" x1="12" y1="15" x2="17" y2="15" stroke="#5eead4" stroke-width="2.5"/>
+                </svg>
+                <span>~/contacto</span>
+            </div>
+
+            <div class="contact-box">
+                <p style="font-family: monospace; color: var(--accent-blue); margin-bottom: 0.5rem; font-weight: bold;">$ ping -c 1 lucia_ramos_gambero</p>
+                <p>Medios de contacto</p>
+
+                <div class="social-links" style="justify-content: center;">
+                    <a href="mailto:luciarg@uma.es" class="btn btn-primary"><i class="fas fa-envelope"></i> luciarg@uma.es</a>
+                    <a href="mailto:luciaramosgam@gmail.com" class="btn"><i class="fas fa-envelope"></i> luciaramosgam@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/luciargg/" target="_blank" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/luciargg" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+
+                <!-- NOTA DISCRETA DE MOVILIDAD -->
+                <div class="subtle-mobility-note">
+                    <i class="fas fa-car"></i> Permiso de Conducir B · Vehículo propio
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Lucía Ramos Gambero · Málaga, España</p>
+        </footer>
+    </div>
+</div>
+
+<!-- SCRIPT SCROLLSPY -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".section-wrapper-1, .section-wrapper-2");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", function () {
+            let currentSectionId = "";
+
+            sections.forEach(function (section) {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSectionId = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(function (link) {
+                link.classList.remove("active");
+                if (currentSectionId && link.getAttribute("href") === "#" + currentSectionId) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
